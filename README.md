@@ -38,9 +38,10 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## File needs
 - next-env.d.ts
 insert in this file next code lines
-``
+
+```bash
 /// <reference types="next" />
 /// <reference types="next/image-types/global" />
 /// <reference types="next/navigation-types/compat/navigation" />
 
-``
+```
