@@ -1,12 +1,13 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-	darkMode: ['class', '[data-mode="dark"]'],
+	darkMode: ["class", '[data-mode="dark"]'],
 	content: [
 		"./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
 		"./src/components/**/*.{js,ts,jsx,tsx,mdx}",
 		"./src/app/**/*.{js,ts,jsx,tsx,mdx}",
 		"./node_modules/flowbite-react/lib/esm/**/*.js",
+		"./node_modules/flowbite/**/*.js",
 	],
 	theme: {
 		extend: {
@@ -16,7 +17,6 @@ const config: Config = {
 					"conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
 			},
 		},
-		
 	},
 	plugins: [require("flowbite/plugin")],
 };

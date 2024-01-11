@@ -63,7 +63,7 @@ export default function NavbarPersonal() {
 				<NavbarLink href="#">Services</NavbarLink>
 				<NavbarLink href="#">Pricing</NavbarLink>
 				<NavbarLink href="#">Contact</NavbarLink>
-				<li><ButtonTheme/></li>
+				<li className="w-full"><ButtonTheme/></li>
 			</NavbarCollapse>
 		</Navbar>
 	);

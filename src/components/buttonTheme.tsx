@@ -42,14 +42,14 @@ const ButtonTheme = () => {
 	}, []);
 	return mode.theme == "dark" ? (
 		<CiSun
-			className="border rounded cursor-pointer border-transparent hover:border-white "
+			className="border rounded cursor-pointer border-transparent hover:border-white  max-md:w-full"
 			onClick={onClick}
 			size={30}
 			color={"#ffffff"}
 		/>
 	) : (
 		<CiDark
-			className="border rounded cursor-pointer hover:border-black"
+			className="border rounded cursor-pointer hover:border-black max-md:w-full"
 			onClick={onClick}
 			size={30}
 			color={"#000000"}

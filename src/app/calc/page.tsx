@@ -7,7 +7,7 @@ export default function Calc() {
 	return (
 		<div className="relative">
 			<DescriptionMain />
-			<div className="h-[300px] w-6/12 absolute right-0">
+			<div className="h-[calc(100vh-60px)] w-screen absolute right-0">
 
 				<FrontPages/>
 			</div>

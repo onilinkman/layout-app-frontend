@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import NavbarPersonal from "@/components/navbarPersonal";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,9 +18,10 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="es" data-mode="dark">
-			<body className={inter.className+" bg-white dark:bg-black"}>
+			<body className={inter.className + " bg-white dark:bg-black"}>
 				<NavbarPersonal />
 				{children}
+				<Script src="/flowbite.min.js" strategy="beforeInteractive" />
 			</body>
 		</html>
 	);
