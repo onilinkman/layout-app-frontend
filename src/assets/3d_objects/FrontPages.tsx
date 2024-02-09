@@ -12,14 +12,18 @@ import {
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import { useEffect, useRef, useState } from "react";
 import { Mesh, TextureLoader, Camera, Euler } from "three";
+import { GLTFLoader } from "three/examples/jsm/Addons.js";
 
 function Box(props: any) {
 	// This reference gives us direct access to the THREE.Mesh object
 	const scroll = useScroll();
 	const ref = useRef<Mesh>(null!);
+	const { scene } = useLoader(GLTFLoader, "/Estante1.glb");
 	// Hold state for hovered and clicked events
 	const [hovered, hover] = useState(false);
 	const [clicked, click] = useState(false);
+	const colorMap = useLoader(TextureLoader, "Textura_estante.jpg");
+	
 
 	// Subscribe this component to the render-loop, rotate the mesh every frame
 	//const n: number = 3; //range position for x
@@ -54,12 +58,13 @@ function Box(props: any) {
 				onPointerOut={(event) => hover(false)}
 			>
 				{/* <boxGeometry args={[1, 1, 1]} /> */}
-				<Gltf
-					src="/Estante1.glb"
+				<primitive
+					object={scene}
 					receiveShadow
 					castShadow
 					rotation={[0, -1.3, 0]}
 				/>
+				<meshStandardMaterial map={colorMap} />
 			</mesh>
 		</Float>
 	);

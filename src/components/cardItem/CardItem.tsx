@@ -1,6 +1,7 @@
 "use client";
 import { Button, Card } from "flowbite-react";
 import ModalModel from "../ModalModel/ModalModel";
+import Image from "next/image";
 
 interface Props {
 	image: string;
@@ -26,7 +27,7 @@ const CardItem = (props: Props) => {
 			<Button.Group className="flex items-center justify-center" outline>
 				<Button color="gray">Profile</Button>
 				<ModalModel>
-					<div>hola</div>
+					<img src={props.image} className="h-full w-full"  alt={props.title}/>
 				</ModalModel>
 				<ModalModel>
 					<div>hola2</div>

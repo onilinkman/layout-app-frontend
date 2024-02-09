@@ -41,13 +41,13 @@ function SidebarComponent() {
 							Dashboard
 						</Sidebar.Item>
 						<Sidebar.Item
-							href="/"
+							href="/catalogos/agregarItem"
 							as={Link}
 							icon={HiViewBoards}
 							label="Pro"
 							labelColor="dark"
 						>
-							Kanban
+							Agregar Item
 						</Sidebar.Item>
 						<Sidebar.Item href="#" icon={HiInbox} label="3">
 							Inbox
