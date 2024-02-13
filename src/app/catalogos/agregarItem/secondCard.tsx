@@ -1,10 +1,14 @@
 "use client";
+import AddColorMenu from "@/components/AddColorMenu";
 import ModalText from "@/components/ModalText/ModalText";
-import { Button, Card, Carousel, Dropdown } from "flowbite-react";
+import SelectC from "@/components/SelectC/SelectC";
+import { GetColor, PathAPI } from "@/pages/repo/ApiPath";
+import { Button, Card, Carousel } from "flowbite-react";
 import Image from "next/image";
 import {
 	ChangeEvent,
 	forwardRef,
+	useEffect,
 	useImperativeHandle,
 	useRef,
 	useState,
@@ -22,6 +26,8 @@ const SecondCard = forwardRef<SecondCardHandle, Props>(function SecondCard(
 	ref
 ) {
 	const [image, setImage] = useState<string | null>(null);
+	const [arraySelect, setArraySelect] = useState<Array<JSX.Element>>([]);
+
 	const refDiv = useRef<HTMLDivElement>(null);
 	const hiddenDiv = () => {
 		refDiv.current?.classList.remove("hidden");
@@ -51,6 +57,36 @@ const SecondCard = forwardRef<SecondCardHandle, Props>(function SecondCard(
 			showDiv,
 		};
 	});
+
+	const getColor = async () => {
+		await fetch(PathAPI + GetColor, {
+			method: "GET",
+			headers: {
+				Accept: "*/*",
+			},
+		})
+			.then((res) => res.json())
+			.then(async (data) => {
+				let body = data.body;
+				let aux: Array<JSX.Element> = [];
+				await body.forEach((value: any, index: number) => {
+					aux.push(
+						<option key={index} value={value?.id_color ?? 0}>
+							{value.nombre}
+						</option>
+					);
+				});
+				setArraySelect(aux);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
+	useEffect(() => {
+		getColor();
+	}, []);
+
 	return (
 		//translate-x-[calc(100vh+600px)] hidden
 		<div
@@ -79,7 +115,7 @@ const SecondCard = forwardRef<SecondCardHandle, Props>(function SecondCard(
 							Si no tiene algun Color puede Agregar uno nuevo
 							pulsando{" "}
 							<ModalText text="Aquí" title="Agregar Color">
-								<div>hola</div>
+								<AddColorMenu />
 							</ModalText>
 						</p>
 						<Image
@@ -88,13 +124,11 @@ const SecondCard = forwardRef<SecondCardHandle, Props>(function SecondCard(
 							width={128}
 							height={128}
 						/>
-						<Dropdown
-							dismissOnClick={false}
-							label="Seleccione Color"
-							className="h-16"
-						>
-							<Dropdown.Item>Vainilla</Dropdown.Item>
-						</Dropdown>
+						<SelectC
+							label="Seleccionar Color"
+							optionDefaut="Seleccione un color"
+							options={arraySelect}
+						/>
 					</div>
 
 					<p className="mb-1 text-sm text-gray-500 dark:text-gray-400">

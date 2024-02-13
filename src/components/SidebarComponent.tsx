@@ -34,6 +34,7 @@ function SidebarComponent() {
 				id="default-sidebar"
 				className="fixed md:relative default-sidebar top-0 left-0 z-40 w-64 h-[calc(100vh-60px)] transition-transform -translate-x-full md:translate-x-0 "
 				aria-label="Sidebar"
+				aria-hidden={true}
 			>
 				<Sidebar.Items>
 					<Sidebar.ItemGroup>
