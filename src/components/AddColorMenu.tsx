@@ -48,14 +48,15 @@ const AddColorMenu = (props: Props) => {
 			fetch(PathAPI + PostAddColor, requestOptions)
 				.then((res) => res.json())
 				.then((data: any) => {
-					console.log(data);
+					if (props?.onUpdate) {
+						props.onUpdate();
+					}
 					clearData();
 				})
 				.catch((err: any) => {
 					console.log(err);
 				})
 				.finally(() => {
-					console.log("acabo");
 					setLoading(false);
 				});
 		}

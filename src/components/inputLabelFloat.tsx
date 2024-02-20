@@ -58,6 +58,7 @@ const InputLabelFloat = forwardRef<InputLableFloatHandle, Props>(
 			<div className="relative text-left z-0 w-full mb-5 group">
 				<FloatingLabel
 					variant="standard"
+					type={props.type ?? "text"}
 					ref={refInput}
 					value={val}
 					onChange={handleInputChange}

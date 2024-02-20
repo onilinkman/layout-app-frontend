@@ -38,8 +38,8 @@ function SidebarComponent() {
 			>
 				<Sidebar.Items>
 					<Sidebar.ItemGroup>
-						<Sidebar.Item href="#" icon={HiChartPie}>
-							Dashboard
+						<Sidebar.Item href="/catalogos" icon={HiChartPie}>
+							Catalogos
 						</Sidebar.Item>
 						<Sidebar.Item
 							href="/catalogos/agregarItem"
